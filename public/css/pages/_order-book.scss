@@ -1,0 +1,52 @@
+@import "../other/colors";
+@import "../other/Functions";
+
+// start order-book
+.h-order-book{
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    list-style: none;
+    @include xs{
+        width: 100%;
+    }
+}
+.h-tap-block-element {
+  background-color: $blue-border;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  text-align: right;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: 0.3s;
+  cursor: pointer;
+  max-width: calc(100% - 2rem);
+  &:hover {
+    transform: scale(1.05);
+  }
+  @include xs {
+    font-size: 0.8rem;
+  }
+}
+.h-tap-button {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid transparent;
+
+  @include xs {
+    font-size: 1rem;
+  }
+  &:hover,
+  &.active {
+    border-bottom: 2px solid $blue;
+  }
+}
+
+.h-tap-block-element {
+  display: block;
+}
+// }
+// end order-book

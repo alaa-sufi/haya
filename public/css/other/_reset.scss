@@ -1,0 +1,121 @@
+///////////////////////////////////////////reset  
+@import "./colors";
+@import "./Functions";
+html {
+    scroll-behavior: smooth;
+  }
+  
+  ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+  }
+  
+  a {
+    color: initial;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: none;
+    color: initial;
+  }
+  
+  button {
+    all: unset;
+  }
+  .form-group {
+    margin-bottom: 1rem;
+    @include xs{
+      margin-bottom: 0.2rem;
+    }
+  }
+  .modal-content{
+    border-radius: 2rem;
+    padding: 0 2rem 0.5rem 2rem;
+    @include xs{
+      padding: 0 1rem;
+    border-radius: 1rem;
+    .modal-body{
+      @include xs{
+        padding: 0;
+      }
+    }
+    }
+    .modal-title{
+        text-align: center;
+width: 100%;
+font-weight: bold;
+h5{
+  @include xs{
+    margin-bottom: 0;
+
+  }
+}
+    }
+    .modal-header{
+        border:none;
+    }
+    .modal-footer{
+        border:none;
+    }
+}
+.MuiCircularProgress-svg.css-1idz92c-MuiCircularProgress-svg{
+  color: #000;
+}
+
+.page {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+}
+
+.page-enter {
+  opacity: 0;
+  transform: scale(1.1);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
+
+
+//reset tabs
+.nav-tabs{
+  all:unset;
+  display: flex;
+justify-content: center;
+gap: 1rem;
+list-style: none;
+.nav-item button{
+  all:unset;
+  font-weight: bold;
+font-size: 1.5rem;
+padding: 0 10px;
+cursor: pointer;
+@include xs{
+  font-size: 1rem;
+}
+&.active{
+  border-bottom: 2px solid $blue !important;
+  background: transparent;
+color: inherit;
+}
+}
+}
+.MuiIconButton-root{
+  position: relative;
+}

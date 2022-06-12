@@ -1,0 +1,9 @@
+{
+    "compilerOptions":{
+        "baseUrl":".",
+        //  it is mean the import start from base or from file 
+        "paths":{
+            "@/*":["components/*"]
+        }
+    }
+}

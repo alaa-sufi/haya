@@ -1,0 +1,74 @@
+// fonts
+@font-face {
+    font-family: "janna";
+    src: url("../fonts/Janna Regular.ttf") format("opentype");
+  }
+  @font-face {
+    font-family: "janna";
+    font-weight: bold;
+    src: url("../fonts/Janna Bold.ttf") format("opentype");
+  }
+  
+  body {
+    direction: rtl;
+    text-align: right;
+    font-family: "janna", sans-serif;
+  
+  }
+//   admin 
+@import "./other/reset";
+@import "./other/Functions";
+@import "./other/global";
+.h-checkbox {
+  label {
+    padding-right: 2rem;
+    &:before {
+      right: 0;
+    }
+    &:after {
+      right:-0.2rem;
+    }
+  }
+}
+@import "./pages/types";
+@import "./pages/trip-type";
+@import "./pages/city";
+@import "./pages/trip_info";
+@import "./pages/order-book";
+@import "./pages/book";
+.h-book .h-button2{
+  margin: 1rem auto 1rem 0;
+ }
+ @import "./pages/drivers";
+
+.h-add-drivers{
+  @include screen(left ,1rem , 1rem ,2rem ,5rem , 8rem)
+}
+//   user 
+@import "./pages/book-info";
+@import "./pages/home";
+@import "./pages/barren";
+@import "./pages/notification";
+@import "./pages/bus";
+@import "./pages/login";
+.h-login .h-login-earth{
+  transform: translateX(-70%) translateY(1rem);
+  animation:  rotate 10s linear infinite;
+  @media (max-width: 900px){
+    transform: translateX(-0) translateY(0);
+    animation:  r 10s linear infinite;
+}
+}
+@import "./pages/superAdminHome";
+@import "./pages/other-cat";
+@keyframes rotate {
+  100%{
+      transform: translateX(-70%) translateY(1rem) rotate(360deg);
+  }
+}
+
+@keyframes r {
+  100%{
+      transform:translateX(0) translateY(0) rotate(360deg);
+  }
+}

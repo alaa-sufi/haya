@@ -1,0 +1,25 @@
+@import "../other/colors";
+@import "../other/Functions";
+
+// start book
+.h-book{
+   .h-book-block{
+       margin-top: 1rem;
+       position: relative;
+       
+   }
+   .h-button2{
+    display: block;
+   }
+   .img-idCard{
+    width: 50%;
+    height: 100%;
+    border-radius: 1.5rem;
+    object-fit: cover;
+    border:1px solid $blue;
+    @include xs{
+    border-radius: 1rem;
+    }
+   }
+}
+// end book

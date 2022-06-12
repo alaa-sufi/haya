@@ -1,0 +1,230 @@
+@import "../other/colors";
+@import "../other/Functions";
+
+.h-bus {
+    .h-block-blue {
+        padding: 2rem;
+    }
+    .h-bus-inputs {
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    .total {
+        font-weight: bold;
+        color: $blue;
+    }
+    .h-bus-block {
+        background-color: #ececec;
+        border: 4px solid #939393;
+        padding: 1rem;
+        border-radius: 1rem;
+        position: relative;
+        &.last4 {
+            // & > div:nth-child(3) > div:last-child{
+            //     display: none;
+            // }
+            & > div:nth-child(3) > div:nth-child(-4) {
+                flex-basis: 25%;
+                max-width: 25%;
+            }
+        }
+        &:after {
+            content: " ";
+            position: absolute;
+            right: -0.3rem;
+            background: white;
+            width: 5px;
+            height: 4rem;
+            display: none;  
+        }
+        &:before {
+            content: " ";
+            position: absolute;
+            right: -0.75rem;
+            width: 18px;
+            height: 4.4rem;
+            border: 5px solid #939393;
+            border-left: none;
+            border-right: none;
+            z-index: 2;
+            display: none;  
+        }
+        &.odd:after {
+            top: calc(50% + 1rem);
+        }
+        &.odd:before {
+            top: calc(50% + 0.7rem);
+        }
+        &.even:after {
+            top: calc(50% + 3rem);
+        }
+        &.even:before {
+            top: calc(50% + 2.8rem);
+        }
+
+        // direction: ltr;
+        .h-bus-block-item {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            background-color: #01a6e9;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0.4rem auto;
+            font-size: 1.5rem;
+            font-weight: bold;
+            // cursor: pointer;
+            user-select: none;
+            &.grey {
+                background-color: #ccc;
+            }
+            &.bookUser ,
+            &.bookAdmin ,
+            &.book{
+                position: relative;
+                background: #c6c6c6;
+                color: #c6c6c6;
+                &:after {
+                    content: "\2716";
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    color: #000;
+                    text-align: center;
+                    font-size: 2rem;
+                    line-height: 1.5;
+                    font-weight: normal;
+                    transform:translateY(-50%)
+                }
+            }
+            &.bookUser:not(.pointer-events-none) {
+                position: relative;
+                background: $dark-blue;
+                color: #fff;
+                &:after {
+                    display:none;
+                }
+            }
+            &.bookAdmin {
+                background: #515151;
+                color: #515151;
+            }
+            &.bookUser  ,
+            &.book{
+                cursor:initial;
+                background: #c6c6c6;
+                color: #c6c6c6;
+            }
+            
+            &.recommend{
+                background: #01a6e9;
+                // color: $dark-blue;
+                position: relative;
+                // &:after {
+                //     content: "\2716";
+                //     position: absolute;
+                //     top: 0;
+                //     left: 0;
+                //     width: 100%;
+                //     height: 100%;
+                //     color: #fff;
+                //     text-align: center;
+                //     font-size: 3rem;
+                //     line-height: 0.9;
+                // }
+            }
+            &.unrecommend{
+                background: #c4c4c4;
+                color: #fff;
+                pointer-events: none;
+                &.bookUser.pointer-events-none {
+                    color: #c4c4c4;
+
+                }
+            }
+        }
+        // .MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-3.css-j23p4t-MuiGrid-root {
+        //     &:nth-child(4n+3 ){
+        //         .h-bus-block-item{
+        //             margin-right: auto;
+        //             margin-left: 0;
+        //         }
+        //     }
+        //     &:nth-child(4n+2){
+        //         .h-bus-block-item{
+        //             margin-left: auto;
+        //             margin-right: 0;
+        //         }
+
+        //     }
+        // }
+        hr {
+            width: 80%;
+            margin-right: auto;
+            margin-left: auto;
+            background-color: $color2;
+        }
+        .last-row {
+            // direction:ltr;
+            justify-content: space-between;
+            .MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-true.css-4jz4pb-MuiGrid-root {
+                &:nth-child(1) {
+                    .h-bus-block-item {
+                        margin-right: 0.6rem;
+                    }
+                }
+                &:last-child {
+                    .h-bus-block-item {
+                        margin-left: 0.6rem;
+                    }
+                }
+            }
+            //     width: 95%;
+            //     margin: auto;
+            //      .h-bus-block-item{
+            //        margin: auto;
+            //    }
+        }
+    }
+    .MuiNativeSelect-select.MuiNativeSelect-standard.MuiInput-input.MuiInputBase-input.css-1dmqq7i-MuiNativeSelect-select-MuiInputBase-input-MuiInput-input {
+        width: 30px;
+    }
+    .MuiInput-input.MuiInputBase-input.css-1x51dt5-MuiInputBase-input-MuiInput-input {
+        width: 50px;
+        text-align: center;
+    }
+    .inside .css-a0vo9r-MuiGrid-root {
+        flex-basis: 20%;
+        max-width: 20%;
+    }
+}
+.h-book-adminarr {
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding-right:3rem ;
+    border-bottom: 1px solid $blue;
+    padding-bottom: 1rem;
+    span:last-child {
+        display: none;
+    }
+}
+.h-book-users-parent{
+    height: 90vh;
+    overflow: auto;
+    .h-book-users{
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        &:not(:last-child){
+            border-bottom:1px solid $blue;
+        }
+    }
+}
+.h-bus-seat{
+    padding: 1.5rem;
+    background: #edfbff;
+    border-radius: 1rem;
+}

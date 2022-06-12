@@ -1,0 +1,62 @@
+@import "../other/colors";
+@import "../other/Functions";
+
+// start h-book-info
+.h-book-info{
+   .h-label{
+    font-size: 1.3rem;
+   }
+   .h-input{
+    padding: 0.8rem .75rem;
+       background-color: rgb(249, 254, 255);
+       &.required{
+          border:1px solid $red;
+       }
+   }
+
+.h-time{
+   .css-1d3z3hw-MuiOutlinedInput-notchedOutline{
+      border: none;
+   }
+   .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
+      background-color: rgb(249, 254, 255);
+      border-radius: 10px;
+   }
+  
+}
+.MuiFormControl-root.MuiTextField-root.css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
+   display: block;
+   padding: 0.8 rem 0.75 rem;
+   background-color: #f9feff;
+   border: none;
+   border-radius: 2rem;
+   & > div{
+      width:100%;
+   }
+   
+}
+fieldset{
+   border: none;
+}
+}
+.css-zylse7-MuiButtonBase-root-MuiIconButton-root{
+   display: none !important;
+}
+.buttons-parent{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 2rem 0;
+   .h-button{
+      margin: 0 1rem;
+   }
+  
+   }
+   .MuiBox-root.css-17uc0ra{
+      padding: 0.8rem .75rem;
+      background-color: #f9feff;
+      border: none;
+      height: calc(100% - 2rem);
+
+   }
+// end h-book-info

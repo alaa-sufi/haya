@@ -1,0 +1,45 @@
+@import "../other/colors";
+@import "../other/Functions";
+
+.search-super-admin-parent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    .search-super-admin{
+        position: relative;
+        max-width: 80%;
+        width: 25rem;
+        .search-super-admin-input{
+            display: block;
+            border-radius: 10px;
+            border: none;
+            padding: 10px;
+            width:max-content;
+            width: 100%;
+            &:focus-visible{
+                outline:none
+            }
+        }
+        .search-super-admin-submit{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            color: #fff;
+            border-radius: 0.5rem;
+        }
+        
+    }
+
+    .search-super-admin-select{
+        background: #a6e3f9;
+        border-radius: 5px;
+        padding: 5px 10px;
+        border: none;
+        &:focus-visible{
+            outline:none
+        }
+    }
+}

@@ -1,0 +1,40 @@
+@import "../other/colors";
+@import "../other/Functions";
+
+// start trip-type
+.h-trip-type{
+   .h-trip-type-block{
+    border: 0.8rem solid $blue-border;
+    background-color:$blue-border;
+    border-bottom-width: 0.8rem;
+    border-bottom-width: 2rem;
+    border-radius: 2rem;
+   }
+   img{
+    border-radius: 1.2rem;
+    transition: 0.3s;
+   }
+   .h-trip-type-block{
+       transition: 0.3s;
+       padding-bottom: 0.5rem;
+       &:hover{
+           transform: scale(1.05);
+           img{
+            background-color: rgba(149, 187, 193, 0.5);
+            mix-blend-mode: luminosity;
+           }
+       }
+       .h-trip-type-h2{
+           width: 100%;
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        position: absolute;
+        bottom: -2rem;
+        left: 50%;
+        z-index: 2;
+        transform: translateX(-50%);
+       }
+   }
+}
+// end trip-type

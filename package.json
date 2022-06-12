@@ -1,0 +1,48 @@
+{
+  "name": "tourims",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "postinstall": "prisma generate",
+    "lint": "next lint",
+    "server-json": "json-server --watch db.json --port 4000"
+  },
+  "dependencies": {
+    "@date-io/date-fns": "^1.3.13",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@material-ui/pickers": "^3.3.10",
+    "@mui/icons-material": "^5.3.0",
+    "@mui/lab": "^5.0.0-alpha.65",
+    "@mui/material": "^5.3.0",
+    "@mui/x-date-pickers": "^5.0.0-alpha.2",
+    "@mui/x-date-pickers-pro": "^5.0.0-alpha.2",
+    "axios": "^0.25.0",
+    "bootstrap": "^5.1.3",
+    "date-fns": "^2.28.0",
+    "draft-js": "^0.11.7",
+    "formik": "2.1.3",
+    "json-server": "^0.17.0",
+    "moment": "^2.29.3",
+    "next": "12.0.10",
+    "next-translate": "^1.4.0",
+    "nprogress": "^0.2.0",
+    "react": "17.0.2",
+    "react-bootstrap": "^2.1.2",
+    "react-calendar-datetime-picker": "^1.6.2",
+    "react-dom": "17.0.2",
+    "react-hot-toast": "2.2.0",
+    "react-image-crop": "^9.0.5",
+    "react-slick": "^0.28.1",
+    "slick-carousel": "^1.8.1",
+    "swiper": "^8.0.0",
+    "swr": "^1.3.0",
+    "yup": "^0.26.6"
+  },
+  "devDependencies": {
+    "eslint": "8.8.0",
+    "eslint-config-next": "12.0.10"
+  }
+}

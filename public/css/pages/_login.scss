@@ -1,0 +1,23 @@
+@import "../other/colors";
+@import "../other/Functions";
+
+.h-login{
+    background-color: rgba($blue , 0.2 );
+    overflow: hidden;
+    // margin-top: -7rem;
+    min-height: 100vh;
+    h2{
+        margin: 2rem 0;
+        font-weight: bold;
+    }
+
+    .h-login-earth{
+        width: 100%;
+    }
+    .h-input{
+        margin-bottom: 2rem;
+        width:20rem;
+        max-width: 80vw;
+    }
+}
+

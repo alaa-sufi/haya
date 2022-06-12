@@ -1,0 +1,29 @@
+@import "../other/colors";
+@import "../other/Functions";
+
+// start trip-info
+.h-trip-info{
+  
+  .book-trip{
+ 
+  @include onlysm-xs{
+    position: fixed;
+bottom: 1rem;
+left: 40%;
+z-index: 9;
+transform: translateX(-100%);
+  }
+  }
+
+}
+.h-trip-info-ul{
+  display: flex;
+  font-size: 1.5rem;
+  padding: 1rem 0;
+  flex-direction: column;
+  @include lg{
+    flex-direction: row;
+  }
+ 
+}
+// end trip-info

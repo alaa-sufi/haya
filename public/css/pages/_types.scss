@@ -1,0 +1,75 @@
+@import "../other/colors";
+@import "../other/Functions";
+
+// start types
+.h-types {
+    // img{
+    //     border-radius: 2rem;
+    //     @include xs{
+    //         border-radius: 1rem;
+
+    //     }
+
+    // }
+    .overlay {
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba($blue, 0.8) 10%, transparent, transparent);
+        }
+        &.radius-2 {
+            &:after {
+                border-radius: 2rem;
+                @include xs {
+                    border-radius: 1rem;
+                }
+            }
+        }
+    }
+    .h-types-block {
+        transition: 0.3s;
+        cursor: pointer;
+        // position: relative;
+        &.city {
+            padding: 1rem;
+            background: $blue-border;
+            border-radius: 1rem;
+            h3{
+                margin: 0.5rem auto 0 auto ; 
+            }
+        }
+        &.islink:hover {
+            transform: scale(1.05);
+            .h-types-h2 {
+                pointer-events: none;
+            }
+        }
+        img {
+            box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .h-types-h2 {
+        // position: absolute;
+        // top: 50%;
+        // left: 2rem;
+        // z-index: 2;
+        // transform: translateY(-50%);
+        // transition: color 0.3s;
+        // @include xs{
+        //     left: 1rem;
+        //     font-size: 1rem;
+        // }
+        text-align: center;
+        font-size: 1.2rem;
+        text-transform: capitalize;
+        @include xs {
+            font-size: 0.8rem;
+        }
+    }
+}
+// end types

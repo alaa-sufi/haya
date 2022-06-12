@@ -1,0 +1,49 @@
+@import "../other/colors";
+@import "../other/Functions";
+
+// start city
+.h-city {
+.h-slide-item{
+  cursor: pointer;
+}
+
+
+  .h-types-h2 {
+    position: absolute;
+    top: 50%;
+    left: 2rem;
+    z-index: 10;
+    transform: translateY(-50%);
+    transition: color 0.3s;
+    @include xs {
+      left: 1rem;
+      font-size: 1rem;
+    }
+  }
+  .h-avialabel-trip {
+    background-color: #fff;
+    font-size: 1.2rem;
+    padding: 2rem 1.5rem;
+    transition: 0.3s;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    @include xs{
+      padding: 0.5rem 1rem;
+img{
+  margin-bottom: 1rem !important;
+  border-radius: 1rem;
+}
+    }
+    &.islink:hover {
+      transform: scale(1.05);
+    }
+
+    li {
+      margin-bottom: 1rem;
+      margin-bottom: 10px;
+    }
+  }
+ 
+}
+// end city

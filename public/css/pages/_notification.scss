@@ -1,0 +1,13 @@
+@import "../other/colors";
+@import "../other/Functions";
+
+.h-notification{
+    .MuiContainer-root.MuiContainer-maxWidthLg.css-1oqqzyl-MuiContainer-root{
+        overflow: auto;
+    }
+    .h-notification-item{
+        // border-bottom: 1px solid $blue-border;
+        // padding: 1rem 0;
+        width: 800px;
+    }
+}

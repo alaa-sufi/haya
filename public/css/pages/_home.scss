@@ -1,0 +1,308 @@
+@import "../other/colors";
+@import "../other/Functions";
+
+// start home
+.h-home {
+  .carousel-indicators {
+    display: none;
+  }
+  .h-big {
+    font-size: 4rem;
+    font-weight: bold;
+    @include xs {
+      font-size: 2rem;
+    }
+    small {
+      font-size: 1.8rem;
+      font-weight: normal;
+    }
+  }
+  .h-home-slider {
+    position: relative;
+    margin-bottom: 2rem;
+    .carousel-1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      filter: blur(6px);
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          180deg,
+          transparent 0%,
+          transparent 60%,
+          #fff
+        );
+        z-index: 1;
+      }
+      img {
+        @include change {
+          // height: 25rem;
+        }
+        @include md {
+          // height: 35rem;
+        }
+      }
+    }
+
+    .carousel-2 {
+      @include screen(padding, 2rem 0, 4rem 0, 5rem 0, 5rem 0, 6rem 0);
+
+      .carousel-caption {
+        right: 0;
+        left: 0;
+        width: 100%;
+      }
+      .head {
+        letter-spacing: 5px;
+        @include screen(font-size, 1rem, 1.2rem, 1.5rem, 2rem, 3rem);
+      }
+    }
+    .h-home-slider-img {
+      color: #000;
+      width: 90%;
+      margin: auto;
+      display: block;
+      object-fit: cover;
+      @include change {
+        height: 15rem;
+      }
+      @include md {
+        height: 25rem;
+      }
+    }
+    .h-home-slider-head {
+      position: absolute;
+      right: 50%;
+      top: 50%;
+      transform: translate(50%, -50%);
+      text-align: center;
+      h2 {
+        color: #fff;
+        text-transform: capitalize;
+        font-weight: bold;
+        text-shadow: 3px 3px 10px black;
+        margin-bottom: 1rem;
+        @include xs {
+          margin-bottom: 0.5rem;
+          font-size: 7vw;
+        }
+      }
+    }
+  }
+  .h-home-download {
+    @include screen(margin-top, 1rem, 3rem, 5rem, 5rem, 6rem);
+
+    .blue-shape {
+      width: 65%;
+      border-radius: 1rem;
+      @include screen(height, 60vw, 250px, 300px, 366px, 366px);
+      background: rgb(175, 222, 233);
+      margin: 2rem auto 4rem auto;
+      padding-bottom: 0rem;
+      @include xs{
+        margin: 0rem auto 4rem auto;
+      }
+    }
+    .h-home-download-man {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0%;
+      left: 0%;
+      // background: url(../images/downloadtop.png);
+      // background-size: 102% 96%;
+      // z-index: -1;
+      background-size: 100%;
+    }
+    .h-home-download-info {
+     
+      @include xs {
+        text-align: center;
+        svg {
+          width: 30vw !important;
+          display: block;
+          &.android {
+            margin-left: auto;
+          }
+          &.apple {
+            margin-right: auto;
+          }
+        }
+      }
+      svg {
+        @include md{
+          border-radius: 8px;
+        }
+        // border-radius: 13px;
+        transition: 0.3s;
+        &:hover {
+          transform: translateY(-2px);
+        }
+      }
+      .android {
+        &:hover {
+          box-shadow: 4px 8px 16px 0 rgba(#00101f, 0.3);
+        }
+      }
+      .apple {
+        &:hover {
+          box-shadow: 4px 8px 16px 0 rgba(#000, 0.3);
+        }
+      }
+    }
+    h2 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      @include xs{
+        
+        font-size: 2rem;
+      }
+    }
+    p {
+      @include screen(font-size, 1rem, 1.5rem, 1.5rem, 1.8rem, 2.4rem);
+    }
+  }
+  .h-home-types {
+  }
+  .h-home-services {
+    margin: 4rem 0;
+    @include xs{
+      margin: 1rem 0;
+    }
+    .card {
+      border: none;
+      margin: auto;
+      background: $blue-border;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      max-width: 300px;
+      height: 26rem;
+      cursor: pointer;
+      @include screen(width, 90%, 100%, 100%, 90%, 80%);
+      @include xs{
+        margin-bottom: 1rem;
+
+      } 
+      &:hover {
+        img {
+          transform: scale(1.1);
+        }
+        p {
+          display: block;
+        }
+        h3 {
+          transform: translateY(0);
+        }
+      }
+      .img {
+        height: 15rem;
+        margin-bottom: 1rem;
+        overflow: hidden;
+        img {
+          object-fit: cover;
+          transition: 0.3s;
+
+          height: 100%;
+        }
+      }
+      h3 {
+        font-weight: 900;
+        transition: 0.3s;
+        @include md {
+          transform: translateY(2rem);
+        }
+        @include change {
+          transform: translateY(0);
+        }
+      }
+      p {
+        font-weight: 400;
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        transition: 0.3s;
+        @include md {
+          display: none;
+        }
+        @include change {
+          font-size: 1rem;
+          display: block;
+        }
+      }
+    }
+  }
+}
+.h-home-footer {
+  // background: url(../images/sand.jpg);
+  // background-position-y: 37%;
+  // padding-top: 10rem;
+  position: relative;
+  padding-top: 2rem;
+  .container {
+    position: relative;
+    // top: 60%;
+    // right: 50%;
+    // transform: translate(50%, -50%);
+  }
+  .h-home-footer-background {
+    // position: absolute;
+    // top: 0;
+    // left:0;
+    // z-index: -1;
+  }
+  .h-big {
+    margin-bottom: 3rem;
+    font-size: 3rem;
+    @include xs {
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+    }
+  }
+  .h-home-footer-ul {
+    font-size: 1.8rem;
+    @include xs {
+      font-size: 1.3rem;
+    }
+    li {
+      margin-bottom: 1rem;
+    }
+  }
+  @include xs {
+    font-size: 10px;
+    img {
+      width: 4rem;
+    }
+    .h-home-footer-ul {
+      img {
+        width: 50px;
+      }
+    }
+  }
+}
+.h-slide-item {
+  width: 40%;
+  padding: 1rem;
+  img {
+    border-radius: 1rem;
+    box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.1);
+  }
+  // height: 200px;
+}
+.slick-next::before,
+.slick-prev::before {
+  color: $blue;
+}
+// end home
+@include xs {
+  .slick-arrow {
+    display: none !important;
+  }
+}
