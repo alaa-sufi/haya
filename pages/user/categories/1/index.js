@@ -11,7 +11,7 @@ export default function TripsComp({ dataTrip, dataPage }) {
 export async function getStaticProps({locale}) {
   const t  = await getT(locale , 'all')
   const response1 = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/category/1`,{headers: {language: t('lang')}});
-  const response2 = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/trip`,{headers: {language: t('lang')}});
+  const response2 = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/trip/category/1`,{headers: {language: t('lang')}});
 
   const dataPage = await response1.json();  
   const dataTrip = await response2.json();  

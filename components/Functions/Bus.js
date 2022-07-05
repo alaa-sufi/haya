@@ -42,11 +42,14 @@ export function GenerateNumBusArr(row, right, left, last, frontDoor = -1, lastDo
 ///////////////////////////////////////////////////////////// start GenerateNumBusArr
 // const selectedChiarList  = [];
 export function ShowBus({ arrBus, last, row, right, left, book, total, allBookSeatsFromApi, handleChooseBook, loading }) {
-  const [seatCount, setSeatCount] = useState(0)
   const [avalibleChairList, setAvalibleChairList] = useState([])
   const [selectedChiarList, setSelectedChiarList] = useState([])
   const [checkRecommend, setCheckRecommend] = useState(false)
+  const [unCheck, setUncheck] = useState(false)
+  const [indexMore, setIndexMore] = useState(-1)
+  const [indexLess, setIndexLess] = useState(-1)
   const checkSeat = (event, index, seat) => {
+    setUncheck(false)
     // index selected seat
     // selectedChiarList : selected List
     // avalibleChairList : recommend 
@@ -75,6 +78,7 @@ export function ShowBus({ arrBus, last, row, right, left, book, total, allBookSe
     //if last seat choose like company book
     if (Number.parseInt(index / last) == (row - 1)) {
       //console.log("last")
+      setAvalibleChairList([])
       setCheckRecommend(false)
 
       return
@@ -118,10 +122,14 @@ export function ShowBus({ arrBus, last, row, right, left, book, total, allBookSe
 
   }
   const uncheckSeat = (event, index, seat) => {
-    const v = selectedChiarList.filter((x) => x != seat)
-    setSelectedChiarList([...v])
+    setIndexMore(index + 1)
+    setIndexLess(index - 1)
+    setUncheck(true)
+    const selectedChiarListArr = selectedChiarList.filter((x) => x != seat)
+    setSelectedChiarList(selectedChiarList.filter((x) => x != seat))
     event.target.classList.remove("bookUser");
     handleChooseBook(seat);
+    const avalibleChairListArr = []
     setAvalibleChairList([])
     // stop checkRecommend
     setCheckRecommend(false)
@@ -132,45 +140,51 @@ export function ShowBus({ arrBus, last, row, right, left, book, total, allBookSe
       setCheckRecommend(false)
       return
     };
+    const seatCount = 0;
     //   if left seat
     if (index % last < left) {
       for (var i = (Number.parseInt(index / last) * last); i < (Number.parseInt(index / last) * last + left); i++) {
-        if ((arrBus[i] != null) && (selectedChiarList.indexOf(+arrBus[i]) === -1) && (allBookSeatsFromApi.indexOf(Math.abs(+arrBus[i])) == -1)) {
+        if ((arrBus[i] != null) && (selectedChiarListArr.indexOf(+arrBus[i]) === -1) && (allBookSeatsFromApi.indexOf(Math.abs(+arrBus[i])) == -1)) {
           //so add to avalibleChairList
-          setAvalibleChairList([...avalibleChairList, Math.abs(+arrBus[i])])
+          setAvalibleChairList([...avalibleChairListArr, Math.abs(+arrBus[i])])
+          avalibleChairListArr.push(Math.abs(+arrBus[i]))
           setCheckRecommend(true)
         }
-        if ((selectedChiarList.indexOf(+arrBus[i]) === -1) && (allBookSeatsFromApi.indexOf(Math.abs(+arrBus[i])) != -1)) {
-          setSeatCount(seatCount + 1)
+        if ((selectedChiarListArr.indexOf(+arrBus[i]) === -1) && (allBookSeatsFromApi.indexOf(Math.abs(+arrBus[i])) != -1)) {
+          seatCount = seatCount + 1;
         }
       }
-      if ((avalibleChairList.length + seatCount) == left) {
+      if ((avalibleChairListArr.length + seatCount) == left) {
         setAvalibleChairList([])
+        avalibleChairListArr = []
+        setCheckRecommend(false)
+
       }
       //set avalibleChairList style
     }
     //if right seat
     else {
       //console.log("right")
-      for (var i = (((Number.parseInt(index / last) + 1) * last)) - right - 1; i < (((Number.parseInt(index / last) + 1) * last)); i++) {
-
-        if ((arrBus[i] != null) && (selectedChiarList.indexOf(+arrBus[i]) === -1) && (allBookSeatsFromApi.indexOf(Math.abs(+arrBus[i])) === -1)) {
+      for (var i = ((Number.parseInt(index / last) + 1) * last) - right - 1; i < ((Number.parseInt(index / last) + 1) * last); i++) {
+        if ((arrBus[i] != null) && (selectedChiarListArr.indexOf(+arrBus[i]) === -1) && (allBookSeatsFromApi.indexOf(Math.abs(+arrBus[i])) === -1)) {
           //so add to avalibleChairList
-          setAvalibleChairList([...avalibleChairList, Math.abs(+arrBus[i])])
-          //console.log("avalibleChairList", avalibleChairList)
+          setAvalibleChairList([...avalibleChairListArr, Math.abs(+arrBus[i])])
+          avalibleChairListArr.push(Math.abs(+arrBus[i]))
           setCheckRecommend(true)
         }
-        if ((selectedChiarList.indexOf(+arrBus[i]) === -1) && (allBookSeatsFromApi.indexOf(Math.abs(+arrBus[i])) != -1)) {
-          setSeatCount(seatCount + 1)
+        if (((selectedChiarListArr.indexOf(+arrBus[i]) === -1) || (arrBus[i] != null))&& ((allBookSeatsFromApi.indexOf(Math.abs(+arrBus[i])) != -1) || (arrBus[i] != null))) {
+          seatCount = seatCount + 1;
         }
-        
+
       }
-      if ((avalibleChairList.length + seatCount) == right) {
+      if ((selectedChiarListArr.length + seatCount) == right) {
         setAvalibleChairList([])
+        avalibleChairListArr = []
+        setCheckRecommend(false)
       }
     }
     // 
-   
+
 
   }
   const handleBook = (event, index, seat, book) => {
@@ -217,7 +231,9 @@ export function ShowBus({ arrBus, last, row, right, left, book, total, allBookSe
               ${(String(seat).startsWith("--") ? book === "admin" : "") ? "bookAdmin" : (String(seat).startsWith("-") && book === "admin") ? "bookUser pointer-events-none" : ""}
               ${(String(seat).startsWith("-") && book === "user") ? "bookUser pointer-events-none" : ""} 
               ${`${selectedChiarList.length < +total ? (avalibleChairList.indexOf(seat) === -1 && checkRecommend) ? "unrecommend" : checkRecommend && "recommend" : ""} `}
+              ${`${((selectedChiarList.length == +total) && (selectedChiarList.indexOf(seat) === -1)) && "unrecommend"}`}
               ${`${([...selectedChiarList, ...allBookSeatsFromApi].indexOf(seat) != -1) ? "bookUser" : ""}`}
+              ${`${(selectedChiarList.indexOf(seat) != -1 && checkRecommend && unCheck && seat != null && (indexMore == index || indexLess == index)) && "pointer-events-initial"}`}
             `} >
               {seat}
             </Box>
@@ -229,81 +245,9 @@ export function ShowBus({ arrBus, last, row, right, left, book, total, allBookSe
           </div>
         }
       </Grid>
-    </Box>
+    </Box >
   );
 }
 ///////////////////////////////////////////////////////////// end GenerateNumBusArr
 
-///////////////////////////////////////////////////////////// start chooseUserSeat
-export function chooseUserSeat(row, right, left, last, seat, ...bookArr) {
-  var arrBus = new Array(row),
-    arrBusBool = new Array(row),
-    //totla people - 1
-    recommendNumber = window.location.pathname.split("/").pop() - 1,
-    v = [],
-    temp,
-    arrRe = [],
-    arrLast = [],
-    vNumber = [];
-  var recomm = Array.from(Array(row), (_) => Array(5).fill(0));
-  var arrBusBool = Array.from(Array(row), (_) => Array(5).fill(0));
-  function convertBusArrToBool() {
-    for (let i = 0; i < arrBusBool.length; i++)
-      for (let j = 0; j < 5; j++) arrBusBool[i][j] = arrBus[i][j] === 0 ? 0 : 1;
-  }
 
-  function chooseSeat(n) {
-    for (let i = 0; i < arrBus.length; i++)
-      for (let j = 0; j < 5; j++)
-        if (Number.parseInt(n) === arrBus[i][j]) return [i, j];
-  }
-  function recommend(i, j, weight) {
-    if (i < 0 || i > arrBus.length - 1 || j < 0 || j > 4) return;
-    if (weight <= recomm[i][j]) return;
-    recomm[i][j] = weight;
-    recommend(i - 1, j, weight - 2); // right
-    recommend(i + 1, j, weight - 2); // left
-    recommend(i, j - 1, weight - 1); // up
-    recommend(i, j + 1, weight - 1); //down
-  }
-  function inti_recommend(i, j, weight, recommendNumber) {
-    arrBusBool[i][j] = 0; //booked choose seat
-
-    recommend(i, j, weight); //weight for all seats for recomm array
-
-    for (let i = 0; i < arrBus.length; i++)
-      for (let j = 0; j < 5; j++) {
-        temp = arrBusBool[i][j] * recomm[i][j]; //convert 1 to number else 0 to 0 // if the chair is not booked let its weight
-        if (temp) v.push({ t: temp, number: arrBus[i][j] }); // push obj in arr {weight , seat} return from weight
-      }
-
-    v.sort(function (a, b) {
-      return b.t - a.t;
-    });
-    vNumber = v.map(function (a) {
-      return a.number;
-    });
-    for (
-      let i = 0;
-      i < recommendNumber;
-      i++ //recommendNumber number of recommend arr
-    ) {
-      arrLast.push(vNumber[i]);
-    }
-    return arrLast;
-  }
-
-  function getRecommendation(seat) {
-    arrBus = GenerateNumBusArr(row, right, left, last, "user", ...bookArr);
-    convertBusArrToBool();
-    arrRe = inti_recommend(
-      chooseSeat(seat)[0],
-      chooseSeat(seat)[1],
-      1000,
-      recommendNumber
-    );
-  }
-  getRecommendation(seat);
-  return arrRe;
-}
-///////////////////////////////////////////////////////////// end chooseUserSeat

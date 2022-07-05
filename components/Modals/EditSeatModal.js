@@ -44,13 +44,13 @@ export default function EditSeatModal({
         return Yup.object().shape({
             first_name: Yup.string().required(t("please_enter_the_name")),
             last_name: Yup.string().required(t("please_enter_the_last_name")),
-            mother_name: Yup.string().required(t("please_enter_the_mothers_name_and_last_name")),
-            father_name: Yup.string().required(t("please_enter_the_fathers_name")),
+            // mother_name: Yup.string().required(t("please_enter_the_mothers_name_and_last_name")),
+            // father_name: Yup.string().required(t("please_enter_the_fathers_name")),
             // obj[currentStep][`id_number`] = Yup.number().min(11 , t("please_enter_the_id_number")).max(11 , t("please_enter_the_id_number")).required(t("please_enter_the_id_number"))
-            id_number: Yup.number().required(t("please_enter_the_id_number")),
+            // id_number: Yup.number().required(t("please_enter_the_id_number")),
             phone_number: Yup.string().required(t("please_enter_the_phone_number")),
             // email: Yup.string().required(t("please_enter_the_email")),
-            date_of_birthday: Yup.date().default(function () { return new Date(); }),
+            // date_of_birthday: Yup.date().default(function () { return new Date(); }),
             // front_idCard: Yup.string().required(t("please_enter_the_first_face")),
             // back_idCard: Yup.string().required(t("please_enter_the_back_face"))
 

@@ -119,3 +119,10 @@ color: inherit;
 .MuiIconButton-root{
   position: relative;
 }
+.pointer-events-initial{
+  pointer-events:initial !important;
+}
+.company-seats{
+  max-height: 100vh;
+  overflow: auto;
+}

@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Al-Hayat Tourism and Travel Company",
+    "short_name": "Al-Hayat Tourism and Travel Company",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -15,5 +15,31 @@
     ],
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
-    "display": "standalone"
+    "display": "standalone",
+    "screenshots": [
+        {
+          "src": "/template-Facebook-min.jpg",
+          "type": "image/jpg",
+          "sizes": "1200x630"
+        },
+        {
+          "src": "/template-Landscape-min.jpg",
+          "type": "image/jpg",
+          "sizes": "1024x512"
+        },
+        {
+          "src": "/template-Linkedin-min.jpg",
+          "type": "image/jpg",
+          "sizes": "180x110"
+        },
+        {
+          "src": "/template-Pinterest-min.jpg",
+          "type": "image/jpg",
+          "sizes": "736x1128"
+        },
+        {
+          "src": "/template-Portrait-min.jpg",
+          "type": "image/jpg",
+          "sizes": "800x1200"
+        }]
 }

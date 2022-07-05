@@ -44,6 +44,10 @@ export default function BookBus() {
 
         setCurrentStep((prev) => prev + 1);
     };
+    const handleNextEnd = (step) => {
+        window.scrollTo(0, 0);
+        setCurrentStep((prev) => prev + step);
+    };
 
     //prev step
     const handlePrevStep = (newData) => {
@@ -78,13 +82,16 @@ export default function BookBus() {
     }
     let c = Object.assign(a, b)
     const [data, setData] = useState(c)
-    const steps = [ <ChooseSeatStep next={handleNextStep} prev={handlePrevStep} data={data} key={totalBusBook + 2} />,
-    ...Array(Number.parseInt(+totalBusBook)).fill(
-        <SeatsSteps next={handleNextStep} data={data} totalBusBook={totalBusBook} currentStep={+currentStep} seat={seat} prev={handlePrevStep} tripId={router.query.tripId} />,
-    ),
-    <EditSeats key={totalBusBook + 1} prev={handlePrevStep} next={handleNextStep} seat={seat} />,
-   
-    <AddressStep next={handleNextStep} prev={handlePrevStep} data={data} key={totalBusBook + 3} />,
+    const steps = [
+       
+        ...Array(Number.parseInt(+totalBusBook)).fill(
+            <SeatsSteps next={handleNextStep} data={data} totalBusBook={totalBusBook} currentStep={+currentStep} seat={seat} prev={handlePrevStep} tripId={router.query.tripId} />,
+            ),
+            <EditSeats key={totalBusBook + 1} prev={handlePrevStep} next={handleNextStep} seat={seat} />,
+            <ChooseSeatStep next={handleNextStep} prev={handlePrevStep} data={data} key={totalBusBook + 2} nextEnd={handleNextEnd} />,
+
+        <AddressStep next={handleNextStep} prev={handlePrevStep} data={data} key={totalBusBook + 3} nextEnd={handleNextEnd} />,
+        <EndBook next={handleNextStep} prev={handlePrevStep} key={totalBusBook + 4} />,
     ]
 
     return (
@@ -114,13 +121,13 @@ const SeatsSteps = (props) => {
     let obj = [...Array.from({ length: props.totalBusBook + 1 }, () => new Object())]
     obj[currentStep][`first_name${currentStep}`] = Yup.string().required(t("please_enter_the_name"))
     obj[currentStep][`last_name${currentStep}`] = Yup.string().required(t("please_enter_the_last_name"))
-    obj[currentStep][`mother_name${currentStep}`] = Yup.string().required(t("please_enter_the_mothers_name_and_last_name"))
-    obj[currentStep][`father_name${currentStep}`] = Yup.string().required(t("please_enter_the_fathers_name"))
+    // obj[currentStep][`mother_name${currentStep}`] = Yup.string().required(t("please_enter_the_mothers_name_and_last_name"))
+    // obj[currentStep][`father_name${currentStep}`] = Yup.string().required(t("please_enter_the_fathers_name"))
     // obj[currentStep][`id_number${currentStep}`] = Yup.number().min(11 , t("please_enter_the_id_number")).max(11 , t("please_enter_the_id_number")).required(t("please_enter_the_id_number"))
-    obj[currentStep][`id_number${currentStep}`] = Yup.number().required(t("please_enter_the_id_number"))
+    // obj[currentStep][`id_number${currentStep}`] = Yup.number().required(t("please_enter_the_id_number"))
     obj[currentStep][`phone_number${currentStep}`] = Yup.string().required(t("please_enter_the_phone_number"))
     // obj[currentStep][`email${currentStep}`] = Yup.string().required(t("please_enter_the_email"))
-    obj[currentStep][`date_of_birthday${currentStep}`] = Yup.date().default(function () { return new Date(); })
+    // obj[currentStep][`date_of_birthday${currentStep}`] = Yup.date().default(function () { return new Date(); })
     obj[currentStep][`front_idCard${currentStep}`] = Yup.string().required(t("please_enter_the_first_face"))
     obj[currentStep][`back_idCard${currentStep}`] = Yup.string().required(t("please_enter_the_back_face"))
     const SeatsStepsValidationSchema = [
@@ -186,10 +193,10 @@ const SeatsSteps = (props) => {
                             <h4 className="fw-bold">{lang === "en" ? `${seat[currentStep + 1]} ${t("the_seat")}` : `${t("the_seat")} ${seat[currentStep + 1]}`} :</h4>
                             <div className={`row `}>
                                 <div className="col-md-6">
-                                    <TextField name={`first_name${currentStep}`} type="text" label={t("the_name")} />
+                                    <TextField required name={`first_name${currentStep}`} type="text" label={t("the_name")} />
                                 </div>
                                 <div className="col-md-6">
-                                    <TextField name={`last_name${currentStep}`} type="text" label={t("the_last_name")} />
+                                    <TextField  required name={`last_name${currentStep}`} type="text" label={t("the_last_name")} />
                                 </div>
                                 <div className="col-md-6">
                                     <TextField name={`father_name${currentStep}`} type="text" label={t("name_of_the_father")} />
@@ -206,7 +213,7 @@ const SeatsSteps = (props) => {
                                     <TextField name={`id_number${currentStep}`} type="text" label={t("the_id_number")} />
                                 </div>
                                 <div className="col-md-6">
-                                    <TextField name={`phone_number${currentStep}`} type="text" label={t("mobile_number")} />
+                                    <TextField required name={`phone_number${currentStep}`} type="text" label={t("mobile_number")} />
                                 </div>
                                 <div className="col-md-6">
                                     {/* <TextField name={`email${currentStep}`} type="email" label={t("e_mail")} /> */}
@@ -222,10 +229,10 @@ const SeatsSteps = (props) => {
                                     </h5>
                                 </div>
                                 <div className="col-md-6">
-                                    <ImgField2 name={`front_idCard${currentStep}`} label={t("the_first_face")} aspect={2.5 / 1} add={true} width="600" height="250" />
+                                    <ImgField2 required name={`front_idCard${currentStep}`} label={t("the_first_face")} aspect={2.5 / 1} add={true} width="600" height="250" />
                                 </div>
                                 <div className="col-md-6">
-                                    <ImgField2 name={`back_idCard${currentStep}`} label={t("the_second_face")} aspect={2.5 / 1} add={true} width="600" height="250" />
+                                    <ImgField2 required name={`back_idCard${currentStep}`} label={t("the_second_face")} aspect={2.5 / 1} add={true} width="600" height="250" />
                                 </div>
                             </div>
                         </div>
@@ -380,12 +387,12 @@ const ChooseSeatStep = (props) => {
                     //عدد المقاعد لا يكفي
                     toast.error(t("sorry_the_number_of_seats_required_is_not_enough_to_reserve_please_reserve_again"));
                     router.replace("/user/categories/1");
-                }else if (error.status === 415) {
+                } else if (error.status === 415) {
                     // تم حجز نفس الكرسي 
                     toast.error(t("sorry_the_same_pre_chosen_seats_have_been_reserved_please_choose_the_seats_again"));
                     setReGenerate(!reGenerate);
                     setChooseSeats([])
-                }else{
+                } else {
                     toast.error(t("sorry_a_problem_occurred"));
                     console.error("There was an error!", error);
                 }
@@ -410,7 +417,7 @@ const ChooseSeatStep = (props) => {
                     const bus = response.data.data.busVariable;
                     setLast(bus.last_seats);
                     setArrBus(GenerateNumBusArr(bus.number_of_rows, bus.right_seats, bus.left_seats, bus.last_seats, bus.front_door, bus.last_door, response.data.data.busSeats).chairList);
-                    console.log("GenerateNumBusArr",GenerateNumBusArr(bus.number_of_rows, bus.right_seats, bus.left_seats, bus.last_seats, bus.front_door, bus.last_door, response.data.data.busSeats).chairList)
+                    console.log("GenerateNumBusArr", GenerateNumBusArr(bus.number_of_rows, bus.right_seats, bus.left_seats, bus.last_seats, bus.front_door, bus.last_door, response.data.data.busSeats).chairList)
                     //all book seat info (company , booking) from api
                     setRow(bus.number_of_rows)
                     setRight(bus.right_seats)
@@ -431,7 +438,7 @@ const ChooseSeatStep = (props) => {
                 // setLoading(false)
                 toast.error(t("sorry_a_problem_occurred"));
             });
-    }, [router.query.tripId , reGenerate]);
+    }, [router.query.tripId, reGenerate]);
     return (
         <>
             <Formik
@@ -446,7 +453,6 @@ const ChooseSeatStep = (props) => {
                             <Grid item md={6} className="mx-auto">
                                 <ShowBus arrBus={arrBus} last={last} book="user" handleChooseBook={handleUserBook} row={row} right={right} left={left} total={router.query.total} allBookSeatsFromApi={allBookSeatsFromApi} loading={loadingBus} />
                             </Grid>
-
                         </div>
                         <div className="row">
                             <div className="col-12">
@@ -461,7 +467,7 @@ const ChooseSeatStep = (props) => {
                     </form>
                 )}
             </Formik>
-            <BookWithDelivery2 openModal={showBookWithDelivery2} onCloseModal={() => { setShowBookWithDelivery2(false); }} handleCancel={() => { router.replace("/"); toast.success(t("the_reservation_has_been_successful")); sessionStorage.setItem("bus-token", "") }} handleOpenNext={() => props.next()} date={trip.begin_date} place={trip.starting_place} />
+            <BookWithDelivery2 openModal={showBookWithDelivery2} onCloseModal={() => { setShowBookWithDelivery2(false); }} handleCancel={() => { props.nextEnd(2); toast.success(t("the_reservation_has_been_successful")); sessionStorage.setItem("bus-token", "") }} handleOpenNext={() => props.next()} date={trip.begin_date} place={trip.starting_place} />
             <BookWithDelivery openModal={showBookWithDelivery} onCloseModal={() => setShowBookWithDelivery(false)} handleOpenNext={() => props.next()} />
         </>
     );
@@ -479,7 +485,9 @@ const AddressStep = (props) => {
             .then((response) => {
                 toast.success(t("the_reservation_has_been_successful"));
                 sessionStorage.setItem("bus-token", "")
-                router.replace("/");
+                props.nextEnd(1);
+
+                // router.replace("/");
                 setLoadingButton(false);
             })
             .catch((error) => {
@@ -493,7 +501,8 @@ const AddressStep = (props) => {
     const handleCancle = () => {
         toast.success(t("the_reservation_has_been_successful"));
         sessionStorage.setItem("bus-token", "")
-        router.replace("/");
+        props.nextEnd(1);
+        // router.replace("/");
 
 
     };
@@ -572,5 +581,35 @@ const AddressStep = (props) => {
                 </form>
             )}
         </Formik>
+    );
+};
+const EndBook = (props) => {
+    const { t, lang } = useTranslation("all")
+    const [loadingButton, setLoadingButton] = useState(false)
+    const router = useRouter();
+
+
+
+    return (
+        <div className="h-block-blue big">
+            <h4 className="fw-bold">{t("reservationInformation")}</h4>
+            <ul className="mb-4 ">
+                <li>{t("theName")}</li>
+                <li>{t("numberOfSeats")}</li>
+                <li>{t("seizedSeatsNumbers")}</li>
+                <li>{t("requestDelivery")}</li>
+                <li>{t("flightDate")}</li>
+                <li>{t("theNumberOfDays")}</li>
+                <li>{t("from")}</li>
+                <li>{t("to")}</li>
+                <li>{t("thePricePerPerson")}</li>
+            </ul>
+            <span className="text-secondary d-block">{t("youCanTakeAScreenshotForInformationForTheReview")}</span>
+            <div className="text-center">
+            <Link href="/">
+                <a className="btn h-button  big  my-4">{t("returnToThePresident")}</a>
+            </Link>
+            </div>
+        </div>
     );
 };

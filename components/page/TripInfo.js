@@ -110,7 +110,7 @@ export default function TripInfo({ type, role, dataPage }) {
                             type === "bus" ? <button className="mr-md-auto ml-md-0 mx-auto my-3 d-block h-button2" onClick={() => { setOpenBookUser(true) }}>{t("book_a_journey")}</button>
                                 :
                                 <a className="mr-md-auto ml-md-0 mx-auto my-3 d-block h-button2 w-max" target="_blank"
-                                    rel="noreferrer" href={`https://wa.me/+963960990506`}>{t("book_a_journey")}</a>
+                                    rel="noreferrer" href={`https://wa.me/+963999999999`}>{t("book_a_journey")}</a>
                             :
                             <></>
                         }

@@ -15,7 +15,7 @@ import { MuiPickersUtilsProvider, DateTimePicker, KeyboardDatePicker } from "@ma
 import LoadingSpinner from "components/UI/LoadingSpinner"
 export function TextField({ label, ...props }) {
   return (
-    <FieldHaya label={label} name={props.name}>
+    <FieldHaya label={label} name={props.name} required={props.required}>
       {props.show ?
         <p className='px-4'>{props.view}</p>
         :
@@ -62,7 +62,7 @@ export function ImgField2({ label, ...props }) {
 
 
   return (
-    <FieldHaya label={label} name={props.name}>
+    <FieldHaya label={label} name={props.name} required={props.required}>
       {/* {defaultImage} */}
       <CropImage2
         defaultImage={defaultImage}
@@ -96,7 +96,7 @@ export function ImgField({ label, ...props }) {
       });
   };
   return (
-    <FieldHaya label={label} name={props.name}>
+    <FieldHaya label={label} name={props.name} required={props.required}>
       <CropImage
         defaultImage={props.add ? DefaultImg : props.img}
         aspect={props.aspect}
@@ -177,7 +177,7 @@ export function HeaderField(props) {
 const FieldHaya = ({ label, name, ...props }) => {
   return (
     <div className="form-group position-relative">
-      <label className="h-label">{label}</label>
+      <label className="h-label"><bdi><span>{label}</span><span>{props.required && <span className="text-danger px-2" >*</span>}</span></bdi></label>
       {props.children}
       <ErrorMessage name={name} component="span" className="text-input-modal-error text-danger" />
     </div>

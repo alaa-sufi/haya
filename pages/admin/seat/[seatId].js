@@ -71,22 +71,22 @@ const { t, lang } = useTranslation("all")
                 </li>
             </ul>
             <div className="row">
-                <div className="col-md-6">
+                {data.data.father_name && <div className="col-md-6">
                     <h5 className="fw-bold">اسم الأب:</h5>
                     <span>{data.data.father_name}</span>
-                </div>
-                <div className="col-md-6">
+                </div>}
+               {data.data.mother_name && <div className="col-md-6">
                     <h5 className="fw-bold">اسم ونسبة الأم:</h5>
                     <span>{data.data.mother_name}</span>
-                </div>
-                <div className="col-md-6">
+                </div>}
+               {data.data.date_of_birthday && <div className="col-md-6">
                     <h5 className="fw-bold">مكان وتاريخ الولادة:</h5>
                     <span>{data.data.date_of_birthday} </span>
-                </div>
-                <div className="col-md-6">
+                </div>}
+               {data.data.id_number && <div className="col-md-6">
                     <h5 className="fw-bold">الرقم الوطني:</h5>
                     <span>{data.data.id_number}</span>
-                </div>
+                </div>}
                 <div className="col-md-6 position-relative">
                     <Image  src={data.data.front_idCard ? data.data.front_idCard : idCard} alt={data.data.first_name} className="img-idCard w-100 my-3 rounded-3"  responsive="relative" width="300" height="200" />
                 </div>

@@ -106,7 +106,6 @@ function HeadShort() {
       <meta property="og:image:height" content="1128" />
       <meta name="description" content="Free Web tutorials"/>
 
-
     </>
   )
 

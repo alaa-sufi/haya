@@ -104,7 +104,7 @@ export default function HotelInfo({ role, dataPage, dataHotelCategory }) {
                     </div>
                     <div className="col">
                         {role === "user" && <a className="me-md-auto ms-md-0 mx-auto my-3 d-block h-button2 w-max" target="_blank"
-                            rel="noreferrer" href={`https://wa.me/+963960990506`}>{t("book_a_journey")}</a>}
+                            rel="noreferrer" href={`https://wa.me/+963999999999`}>{t("book_a_journey")}</a>}
                     </div>
                 </div>
                 <p>

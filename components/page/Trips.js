@@ -57,7 +57,7 @@ export default function Trips({ role, dataTrip, dataPage }) {
         setTrips(trips.filter((x) => x.id !== +deleteTripId));
     }
     const { data: dataPageApi, error: error1 } = useSWR(`${process.env.NEXT_PUBLIC_SERVER}/category/1`);
-    const { data: dataTripsApi, error: error2 } = useSWR(`${process.env.NEXT_PUBLIC_SERVER}/trip`);
+    const { data: dataTripsApi, error: error2 } = useSWR(`${process.env.NEXT_PUBLIC_SERVER}/trip/category/1`);
     useEffect(() => {
         if (dataTripsApi) {
             setTrips(dataTripsApi.data)
