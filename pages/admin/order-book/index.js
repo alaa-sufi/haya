@@ -9,7 +9,7 @@ import LoadingSpinner from "@/UI/LoadingSpinner"
 import { useAuth } from "hooks/use-Auth"
 import Head from 'next/head'
 import useTranslation from 'next-translate/useTranslation'
-import NoInfo from "@/Ui/NoInfo";
+import NoInfo from "@/UI/NoInfo";
 
 export default function AdminOrderBook() {
     const {user, isLoading} = useAuth({middleware: 'auth'})

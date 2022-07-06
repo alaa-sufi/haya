@@ -7,7 +7,7 @@ import UserInfoUl from '@/UI/Short/UserInfoUl';
 import NumberToStrignSeat from "@/Functions/NumberToStrignSeat";
 import { useAuth } from "hooks/use-Auth"
 import toast from "react-hot-toast";
-import NoInfo from "@/Ui/NoInfo";
+import NoInfo from "@/UI/NoInfo";
 import useTranslation from 'next-translate/useTranslation'
 import { Info, Person, LocalPhone, Delete } from "@mui/icons-material";
 import Link from "next/link"

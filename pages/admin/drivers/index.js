@@ -11,7 +11,7 @@ import { useAuth } from "hooks/use-Auth"
 import LoadingSpinner from "@/UI/LoadingSpinner"
 import Head from 'next/head'
 import useTranslation from 'next-translate/useTranslation'
-import NoInfo from "@/Ui/NoInfo";
+import NoInfo from "@/UI/NoInfo";
 
 export default function Drivers() {
   const { t, lang } = useTranslation("all")

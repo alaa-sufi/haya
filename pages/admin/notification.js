@@ -8,7 +8,7 @@ import AddEditNotification from "@/Modals/AddEditNotification"
 import Image from "next/image";
 import add from "public/images/add circle.svg"
 import { Pagination } from '@mui/material';
-import NoInfo from "@/Ui/NoInfo";
+import NoInfo from "@/UI/NoInfo";
 import useSWR, { useSWRConfig } from 'swr'
 import { useAuth } from "hooks/use-Auth"
 import LoadingSpinner from "@/UI/LoadingSpinner"

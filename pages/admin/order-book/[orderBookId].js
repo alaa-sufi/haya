@@ -13,7 +13,7 @@ import { useAuth } from "hooks/use-Auth"
 import toast from "react-hot-toast";
 import Head from 'next/head'
 import useTranslation from 'next-translate/useTranslation'
-import NoInfo from "@/Ui/NoInfo";
+import NoInfo from "@/UI/NoInfo";
 
 export default function AdminOrderBookInside() {
     const { t, lang } = useTranslation("all")

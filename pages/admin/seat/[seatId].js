@@ -10,7 +10,7 @@ import NumberToStrignSeat from '@/Functions/NumberToStrignSeat';
 import { useAuth } from "hooks/use-Auth"
 import Head from 'next/head'
 import useTranslation from 'next-translate/useTranslation'
-import NoInfo from "@/Ui/NoInfo";
+import NoInfo from "@/UI/NoInfo";
 
 export default function AdminBookInside() {
     const {user, isLoading} = useAuth({middleware: 'auth'})
