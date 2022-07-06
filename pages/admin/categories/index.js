@@ -7,7 +7,7 @@ import { useAuth } from "hooks/use-Auth"
 import LoadingSpinner from "@/UI/LoadingSpinner"
 import useSWR, { useSWRConfig } from 'swr'
 import useTranslation from 'next-translate/useTranslation'
-import NoInfo from "@/ui/NoInfo"
+import NoInfo from "@/Ui/NoInfo";
 
 export default function Categories() {
     const { user, isLoading } = useAuth({ middleware: 'auth' })

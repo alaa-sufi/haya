@@ -13,7 +13,7 @@ import LoadingSpinner from "@/UI/LoadingSpinner"
 import { useAuth } from "hooks/use-Auth"
 import Head from 'next/head'
 import useTranslation from 'next-translate/useTranslation'
-import NoInfo from "@/ui/NoInfo"
+import NoInfo from "components/UI/NoInfo"
 
 export default function AdminBarren() {
     const { t, lang } = useTranslation("all")

@@ -10,7 +10,7 @@ import { useAuth } from "hooks/use-Auth"
 import LoadingSpinner from "@/UI/LoadingSpinner"
 import Head from 'next/head'
 import useTranslation from 'next-translate/useTranslation'
-import NoInfo from "@/ui/NoInfo"
+import NoInfo from "@/Ui/NoInfo";
 
 export default function OrderDelivery() {
     const {user, isLoading} = useAuth({middleware: 'auth'})
