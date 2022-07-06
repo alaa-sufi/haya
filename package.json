@@ -5,7 +5,6 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "postinstall": "postinstall: prisma generate",
     "lint": "next lint",
     "server-json": "json-server --watch db.json --port 4000"
   },
